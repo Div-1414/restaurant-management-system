@@ -1,0 +1,677 @@
+/* ===================== MAIN LAYOUT ===================== */
+.kitchen-dashboard {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #1a3a3a;
+  color: #1a1a1a;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+/* ===================== HEADER ===================== */
+/* ===================== HEADER ===================== */
+.kitchen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: #0f2e2e;
+  border-bottom: 2px solid #2d5a5a;
+}
+
+.restaurant-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #d4af37;
+  letter-spacing: 1px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.status-dot.connected {
+  background: #4ade80;
+}
+
+.status-text {
+  color: #ffffff;
+}
+
+.status-dot.connected + .status-text {
+  color: #4ade80;
+}
+
+.status-dot.disconnected + .status-text {
+  color: #ef4444;
+}
+
+/* ===================== PAGE TITLE ===================== */
+.page-title {
+  text-align: center;
+  padding: 20px;
+  background: #1a3a3a;
+}
+
+.page-title h1 {
+  margin: 0;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 2rem;
+  color: #d4af37;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ===================== COLUMNS ===================== */
+.kitchen-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  flex: 1;
+  overflow: hidden;
+  background: #1a3a3a;
+}
+
+.kitchen-column {
+  background: #2d5a5a;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #c17a5c;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.count-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ===================== ORDERS LIST ===================== */
+.orders-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===================== ORDER CARD ===================== */
+.order-card {
+  background: #d4e8d4;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===================== CARD HEADER ===================== */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.order-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.order-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.customer-name {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.order-badges {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.gold-badge {
+  background: #d4af37;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.timer-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-align: center;
+  min-width: 60px;
+}
+
+.timer-badge.normal {
+  background: #1a3a3a;
+  color: white;
+}
+
+.timer-badge.warning {
+  background: #e8a87c;
+  color: #1a1a1a;
+}
+
+.timer-badge.urgent {
+  background: #c75b5b;
+  color: white;
+}
+
+.timer-label {
+  font-size: 0.65rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===================== ITEMS TABLE ===================== */
+.items-header {
+  display: grid;
+  grid-template-columns: 1fr 50px 80px;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #9ca3af;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: 1fr 50px 80px;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.item-row:last-child {
+  border-bottom: none;
+}
+
+.item-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #c17a5c;
+  cursor: pointer;
+}
+
+.item-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.item-name.checked {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.item-details {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.special-instructions {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-style: italic;
+  margin-top: 4px;
+  padding-left: 28px;
+}
+
+.qty {
+  text-align: center;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.half-plate {
+  text-align: right;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+/* ===================== CARD FOOTER ===================== */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  margin-top: 8px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.total {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.btn-complete {
+  background: #c17a5c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-transform: capitalize;
+}
+
+.btn-complete:hover {
+  background: #a6694d;
+}
+
+/* ===================== LOADING ===================== */
+.kitchen-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #1a3a3a;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* ===================== EMPTY STATE ===================== */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* ===================== CONFIRM MODAL ===================== */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.confirm-box {
+  background: #d4e8d4;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.confirm-box h3 {
+  margin: 0 0 10px 0;
+  color: #1a1a1a;
+  font-size: 1.3rem;
+}
+
+.confirm-box p {
+  color: #4b5563;
+  margin-bottom: 20px;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.confirm-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.confirm-actions button:first-child {
+  background: #6b7280;
+  color: white;
+}
+
+.confirm-actions button:first-child:hover {
+  background: #4b5563;
+}
+
+.confirm-actions button:last-child {
+  background: #c17a5c;
+  color: white;
+}
+
+.confirm-actions button:last-child:hover {
+  background: #a6694d;
+}
+
+/* ===================== POPUP ===================== */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #d4e8d4;
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content h2 {
+  margin: 0 0 20px 0;
+  color: #1a1a1a;
+  font-size: 1.5rem;
+}
+
+.popup-close {
+  background: #c17a5c;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.popup-close:hover {
+  background: #a6694d;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1200px) {
+  .kitchen-columns {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+  
+  .kitchen-header {
+    padding: 12px 20px;
+  }
+  
+  .restaurant-name {
+    font-size: 1rem;
+  }
+}
+
+
+/* ===================== CLOSED STATE ===================== */
+.kitchen-closed-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a3a3a;
+}
+
+.kitchen-closed-box {
+  background: #0f2e2e;
+  border: 2px solid #d4af37;
+  border-radius: 16px;
+  padding: 48px 60px;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  max-width: 480px;
+  width: 90%;
+}
+
+.kitchen-closed-icon {
+  font-size: 52px;
+  margin-bottom: 16px;
+}
+
+.kitchen-closed-title {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #d4af37;
+  margin: 0 0 12px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.kitchen-closed-msg {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 28px 0;
+}
+
+.kitchen-closed-badge {
+  display: inline-block;
+  background: transparent;
+  color: #d4af37;
+  border: 2px solid #d4af37;
+  padding: 8px 28px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ===================== EMPTY STATE ===================== */
+.kitchen-empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1a3a3a;
+}
+
+.kitchen-empty-icon {
+  font-size: 52px;
+  margin-bottom: 16px;
+}
+
+.kitchen-empty-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #d4af37;
+  margin: 0 0 6px 0;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  letter-spacing: 1px;
+}
+
+.kitchen-empty-sub {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+
+/* ✅ NEW: Order-level Special Instructions */
+.order-special-instructions {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+  border-left: 4px solid #ffc107;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.special-instructions-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.warning-icon {
+  font-size: 16px;
+}
+
+.special-instructions-title {
+  font-weight: 700;
+  color: #856404;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.special-instructions-text {
+  color: #856404;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ✅ NEW: Item Add-ons */
+.item-addons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  margin-left: 4px;
+}
+
+.addon-tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #bbdefb;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ✅ NEW: Item-level Special Instructions */
+.item-special-instructions {
+  margin-top: 6px;
+  margin-left: 4px;
+  padding: 6px 10px;
+  background: #fff8e1;
+  border-radius: 6px;
+  border-left: 3px solid #ffb300;
+  font-size: 12px;
+  color: #5d4037;
+}
+
+.instruction-label {
+  font-weight: 600;
+  color: #ef6c00;
+  margin-right: 4px;
+}
+
+/* Dark mode support for kitchen display */
+@media (prefers-color-scheme: dark) {
+  .order-special-instructions {
+    background: linear-gradient(135deg, #4a4a2a 0%, #3d3d1f 100%);
+    border-left-color: #ffab00;
+  }
+  
+  .special-instructions-title,
+  .special-instructions-text {
+    color: #ffe082;
+  }
+  
+  .addon-tag {
+    background: #1e3a5f;
+    color: #90caf9;
+    border-color: #1565c0;
+  }
+  
+  .item-special-instructions {
+    background: #4a3f18;
+    color: #ffe082;
+    border-left-color: #ffab00;
+  }
+  
+  .instruction-label {
+    color: #ffb74d;
+  }
+}

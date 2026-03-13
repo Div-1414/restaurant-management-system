@@ -1,0 +1,669 @@
+/* ============================================================
+   ParcelMenu.css
+   Palette: Deep Plum + Saffron + Warm Cream
+   Fonts: Playfair Display (headings) + DM Sans (body)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  --plum:         #3b1f4e;
+  --plum-dark:    #2a1238;
+  --plum-mid:     #5a2d7a;
+  --plum-light:   #7c4d9a;
+  --saffron:      #c8622a;
+  --saffron-lt:   #e07640;
+  --saffron-pale: #f5dcc8;
+  --cream:        #fdf6ee;
+  --cream-dark:   #f3e8d8;
+  --gold:         #c9972b;
+  --gold-lt:      #f0c96a;
+  --text-main:    #1e0f2e;
+  --text-muted:   #7a6080;
+  --white:        #ffffff;
+  --danger:       #c0392b;
+  --radius-card:  16px;
+  --radius-btn:   12px;
+  --shadow-card:  0 4px 20px rgba(59, 31, 78, 0.10);
+  --shadow-hover: 0 8px 32px rgba(59, 31, 78, 0.18);
+  --transition:   0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Base reset inside parcel menu ─────────────────────────── */
+.pm-root {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  min-height: 100vh;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Page load animation ───────────────────────────────────── */
+@keyframes pmFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pmFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pmSlideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pmPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+@keyframes pmCartBounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.15); }
+  60%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* ── Hero / Header ─────────────────────────────────────────── */
+.pm-hero {
+  background: linear-gradient(145deg, var(--plum-dark) 0%, var(--plum) 55%, var(--plum-mid) 100%);
+  padding: 28px 20px 36px;
+  position: relative;
+  overflow: hidden;
+  animation: pmFadeIn 0.5s ease both;
+}
+
+.pm-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(200, 98, 42, 0.12);
+  pointer-events: none;
+}
+
+.pm-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(201, 151, 43, 0.08);
+  pointer-events: none;
+}
+
+.pm-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.12);
+  color: var(--gold-lt);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 10px;
+  animation: pmSlideDown 0.5s 0.1s ease both;
+}
+
+.pm-hero-tag-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #6ddd8a;
+  box-shadow: 0 0 6px #6ddd8a;
+}
+
+.pm-restaurant-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.2;
+  margin: 0 0 4px;
+  animation: pmFadeUp 0.5s 0.15s ease both;
+}
+
+.pm-welcome-msg {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+  animation: pmFadeUp 0.5s 0.2s ease both;
+}
+
+.pm-hero-divider {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 20px;
+  background: var(--cream);
+  border-radius: 20px 20px 0 0;
+}
+
+/* ── Loading skeleton ──────────────────────────────────────── */
+.pm-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 80px 20px;
+  animation: pmFadeIn 0.4s ease both;
+}
+
+.pm-loading-spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--saffron-pale);
+  border-top-color: var(--saffron);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.pm-loading-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ── Category heading ──────────────────────────────────────── */
+.pm-category {
+  animation: pmFadeUp 0.45s ease both;
+}
+
+.pm-category-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.pm-category-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--plum);
+}
+
+.pm-category-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--plum-light), transparent);
+  opacity: 0.3;
+}
+
+.pm-category-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--saffron);
+  background: var(--saffron-pale);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* ── Menu Item Card ────────────────────────────────────────── */
+.pm-item-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+  border: 1.5px solid rgba(59, 31, 78, 0.06);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  animation: pmFadeUp 0.4s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.pm-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(200, 98, 42, 0.18);
+}
+
+.pm-item-card.in-cart {
+  border-color: rgba(200, 98, 42, 0.35);
+  background: linear-gradient(135deg, #fffaf6 0%, var(--white) 100%);
+}
+
+.pm-item-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--saffron);
+  opacity: 0;
+  transition: opacity var(--transition);
+  border-radius: 3px 0 0 3px;
+}
+
+.pm-item-card.in-cart::before {
+  opacity: 1;
+}
+
+.pm-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.pm-item-info {
+  flex: 1;
+}
+
+.pm-item-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+
+.pm-item-price {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.pm-item-price strong {
+  color: var(--saffron);
+  font-weight: 600;
+}
+
+/* ── Add / Remove Buttons ──────────────────────────────────── */
+.pm-btn-add {
+  background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-lt) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-btn);
+  padding: 8px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+  box-shadow: 0 3px 10px rgba(200, 98, 42, 0.35);
+  flex-shrink: 0;
+}
+
+.pm-btn-add:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(200, 98, 42, 0.45);
+  filter: brightness(1.05);
+}
+
+.pm-btn-add:active {
+  transform: scale(0.97);
+}
+
+.pm-btn-remove {
+  background: transparent;
+  color: var(--danger);
+  border: 1.5px solid rgba(192, 57, 43, 0.3);
+  border-radius: var(--radius-btn);
+  padding: 7px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pm-btn-remove:hover {
+  background: rgba(192, 57, 43, 0.07);
+  border-color: var(--danger);
+  transform: scale(1.02);
+}
+
+/* ── Cart controls section ─────────────────────────────────── */
+.pm-cart-controls {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(59, 31, 78, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: pmFadeUp 0.3s ease both;
+}
+
+/* ── Quantity Selector ─────────────────────────────────────── */
+.pm-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pm-qty-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.pm-qty-select {
+  border: 1.5px solid rgba(59, 31, 78, 0.18);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--plum);
+  background: var(--cream);
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  appearance: auto;
+}
+
+.pm-qty-select:focus {
+  border-color: var(--saffron);
+  box-shadow: 0 0 0 3px rgba(200, 98, 42, 0.12);
+}
+
+/* ── Options / Extras ──────────────────────────────────────── */
+.pm-option-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 5px 0;
+  transition: color var(--transition);
+}
+
+.pm-option-label:hover {
+  color: var(--saffron);
+}
+
+.pm-option-label input[type="checkbox"] {
+  accent-color: var(--saffron);
+  width: 15px; height: 15px;
+  cursor: pointer;
+}
+
+.pm-option-extra {
+  color: var(--saffron);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* ── Item total ────────────────────────────────────────────── */
+.pm-item-total {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--plum);
+  text-align: right;
+}
+
+/* ── Customer Details Section ──────────────────────────────── */
+.pm-details-section {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: 18px;
+  box-shadow: var(--shadow-card);
+  border: 1.5px solid rgba(59, 31, 78, 0.06);
+  animation: pmFadeUp 0.45s ease both;
+}
+
+.pm-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--plum);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pm-section-title-icon {
+  width: 20px; height: 20px;
+  color: var(--saffron);
+}
+
+.pm-input {
+  width: 100%;
+  border: 1.5px solid rgba(59, 31, 78, 0.15);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--text-main);
+  background: var(--cream);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  box-sizing: border-box;
+}
+
+.pm-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.pm-input:focus {
+  border-color: var(--saffron);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(200, 98, 42, 0.12);
+}
+
+/* ── Order Summary Panel ───────────────────────────────────── */
+.pm-summary {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  border: 1.5px solid rgba(59, 31, 78, 0.08);
+  animation: pmFadeUp 0.35s ease both;
+}
+
+.pm-summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(59, 31, 78, 0.06);
+}
+
+.pm-summary-item:last-of-type {
+  border-bottom: none;
+}
+
+.pm-summary-item-name {
+  font-size: 13.5px;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.pm-summary-item-price {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--plum);
+}
+
+.pm-summary-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px solid rgba(59, 31, 78, 0.1);
+}
+
+.pm-summary-total-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--plum);
+}
+
+.pm-summary-total-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--saffron);
+}
+
+/* ── Bottom bar ────────────────────────────────────────────── */
+.pm-bottom-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--white);
+  border-top: 1px solid rgba(59, 31, 78, 0.1);
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  box-shadow: 0 -4px 24px rgba(59, 31, 78, 0.10);
+  z-index: 100;
+  animation: pmSlideDown 0.4s ease both;
+}
+
+/* ── View Cart Button ──────────────────────────────────────── */
+.pm-btn-cart {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-btn);
+  background: linear-gradient(135deg, var(--plum) 0%, var(--plum-mid) 100%);
+  color: var(--white);
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+  box-shadow: 0 4px 16px rgba(59, 31, 78, 0.35);
+  letter-spacing: 0.02em;
+}
+
+.pm-btn-cart:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(59, 31, 78, 0.45);
+  filter: brightness(1.06);
+}
+
+.pm-btn-cart:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.pm-btn-cart:disabled {
+  background: #d1c4d8;
+  color: #a090aa;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.pm-btn-cart-badge {
+  background: var(--saffron);
+  color: var(--white);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  animation: pmCartBounce 0.4s ease;
+}
+
+/* ── Confirm / Back buttons ────────────────────────────────── */
+.pm-btn-back {
+  flex: 1;
+  padding: 14px;
+  border-radius: var(--radius-btn);
+  border: 1.5px solid rgba(59, 31, 78, 0.2);
+  background: transparent;
+  color: var(--plum);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.pm-btn-back:hover {
+  background: rgba(59, 31, 78, 0.05);
+  border-color: var(--plum);
+  transform: scale(1.01);
+}
+
+.pm-btn-confirm {
+  flex: 1;
+  padding: 14px;
+  border-radius: var(--radius-btn);
+  border: none;
+  background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-lt) 100%);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(200, 98, 42, 0.35);
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+}
+
+.pm-btn-confirm:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(200, 98, 42, 0.45);
+  filter: brightness(1.05);
+}
+
+.pm-btn-confirm:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.pm-btn-confirm:disabled {
+  background: #e0cfc8;
+  color: #b09080;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ── Cart icon dot on view-cart btn ───────────────────────── */
+.pm-cart-icon-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ── Empty cart hint ───────────────────────────────────────── */
+.pm-empty-hint {
+  text-align: center;
+  padding: 20px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+  animation: pmFadeIn 0.5s ease both;
+}
+
+/* ── Stagger delays for category cards ────────────────────── */
+.pm-item-card:nth-child(1) { animation-delay: 0.05s; }
+.pm-item-card:nth-child(2) { animation-delay: 0.10s; }
+.pm-item-card:nth-child(3) { animation-delay: 0.15s; }
+.pm-item-card:nth-child(4) { animation-delay: 0.20s; }
+.pm-item-card:nth-child(5) { animation-delay: 0.25s; }
+.pm-item-card:nth-child(6) { animation-delay: 0.30s; }
+
+.pm-category:nth-child(1) { animation-delay: 0.08s; }
+.pm-category:nth-child(2) { animation-delay: 0.14s; }
+.pm-category:nth-child(3) { animation-delay: 0.20s; }
+.pm-category:nth-child(4) { animation-delay: 0.26s; }
+
+/* ── Scrollbar styling ─────────────────────────────────────── */
+.pm-root ::-webkit-scrollbar { width: 4px; }
+.pm-root ::-webkit-scrollbar-track { background: transparent; }
+.pm-root ::-webkit-scrollbar-thumb { background: rgba(59,31,78,0.2); border-radius: 4px; }

@@ -1,0 +1,145 @@
+{
+  "design_system": {
+    "typography": {
+      "font_family": {
+        "heading": "Manrope, sans-serif",
+        "body": "Inter, sans-serif",
+        "display": "Playfair Display, serif"
+      },
+      "scale": {
+        "h1": "text-4xl md:text-5xl font-bold tracking-tight",
+        "h2": "text-3xl md:text-4xl font-bold tracking-tight",
+        "h3": "text-2xl font-semibold tracking-tight",
+        "h4": "text-xl font-semibold",
+        "body_lg": "text-lg leading-relaxed",
+        "body_base": "text-base leading-relaxed",
+        "caption": "text-sm text-muted-foreground"
+      }
+    },
+    "colors": {
+      "primary": {
+        "DEFAULT": "#F97316",
+        "foreground": "#FFFFFF",
+        "hover": "#EA580C",
+        "description": "Spicy Orange - Use for primary CTAs, active states, and key brand moments."
+      },
+      "secondary": {
+        "DEFAULT": "#1F2937",
+        "foreground": "#FFFFFF",
+        "description": "Charcoal - Use for headings, high contrast text, and dark mode backgrounds."
+      },
+      "accent": {
+        "DEFAULT": "#84CC16",
+        "foreground": "#FFFFFF",
+        "description": "Fresh Lime - Use for success states, 'New' badges, and vegan/healthy indicators."
+      },
+      "background": {
+        "light": "#FFFFFF",
+        "dark": "#0F172A",
+        "subtle": "#F3F4F6"
+      },
+      "status": {
+        "occupied": "#EF4444",
+        "available": "#10B981",
+        "cooking": "#F59E0B",
+        "ready": "#10B981"
+      }
+    },
+    "spacing": {
+      "container_padding": "p-4 md:p-8 lg:p-12",
+      "section_gap": "gap-8 md:gap-12",
+      "card_padding": "p-6"
+    },
+    "radius": {
+      "default": "rounded-lg",
+      "button": "rounded-full",
+      "card": "rounded-xl"
+    },
+    "shadows": {
+      "card": "shadow-sm hover:shadow-md transition-shadow duration-200",
+      "floating": "shadow-xl shadow-orange-500/20"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-3 font-semibold shadow-lg shadow-orange-500/20 transition-all active:scale-95",
+      "secondary": "bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full px-6 py-2 font-medium",
+      "outline": "border-2 border-primary text-primary hover:bg-primary/10 rounded-full px-6 py-2 font-medium",
+      "ghost": "hover:bg-accent/10 text-accent-foreground hover:text-accent rounded-md px-4 py-2"
+    },
+    "cards": {
+      "menu_item": "bg-white dark:bg-slate-900 border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-colors group",
+      "dashboard_stat": "bg-white dark:bg-slate-900 p-6 rounded-xl border border-border shadow-sm",
+      "table_card": "aspect-square flex flex-col items-center justify-center rounded-xl border-2 transition-all cursor-pointer hover:scale-105"
+    },
+    "inputs": {
+      "default": "flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+    }
+  },
+  "layout_strategies": {
+    "customer_app": {
+      "type": "mobile_first",
+      "structure": "Sticky bottom nav for cart, vertical scroll for menu categories. Hero section with appetizing imagery.",
+      "grid": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    },
+    "admin_dashboard": {
+      "type": "sidebar_layout",
+      "structure": "Fixed sidebar (dark), scrollable main content (light/gray). Top header for search/profile.",
+      "grid": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
+    },
+    "kitchen_display": {
+      "type": "kanban_board",
+      "structure": "Full screen, high contrast. Columns for 'Pending', 'Cooking', 'Ready'. Large text for readability from distance.",
+      "grid": "grid-cols-1 md:grid-cols-3 gap-4 h-full"
+    }
+  },
+  "image_assets": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1719204089341-11dec48eae19?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjByZXN0YXVyYW50JTIwaW50ZXJpb3IlMjBkaW5pbmd8ZW58MHx8fHwxNzY5OTM1MzE3fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Modern restaurant interior",
+      "usage": "Login page background, Landing page hero"
+    },
+    "menu_items": [
+      {
+        "category": "Burgers",
+        "url": "https://images.unsplash.com/photo-1762922425249-144c3bb9167e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwxfHxnb3VybWV0JTIwaW50ZXJpb3IlMjBkaW5pbmd8ZW58MHx8fHwxNzY5OTM1MzIwfDA&ixlib=rb-4.1.0&q=85",
+        "alt": "Gourmet Burger"
+      },
+      {
+        "category": "Salads",
+        "url": "https://images.unsplash.com/photo-1739436776460-35f309e3f887?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxmcmVzaCUyMGNhZXNhciUyMHNhbGFkfGVufDB8fHx8MTc2OTkzNTMyMnww&ixlib=rb-4.1.0&q=85",
+        "alt": "Fresh Caesar Salad"
+      },
+      {
+        "category": "Pizza",
+        "url": "https://images.unsplash.com/photo-1760419991459-8f084f7b9be0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjQyMTd8MHwxfHNlYXJjaHwxfHxtYXJnaGVyaXRhJTIwcGl6emElMjBydXN0aWN8ZW58MHx8fHwxNzY5OTM1MzI3fDA&ixlib=rb-4.1.0&q=85",
+        "alt": "Rustic Margherita Pizza"
+      },
+      {
+        "category": "Drinks",
+        "url": "https://images.unsplash.com/photo-1674332611470-92826510a851?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwxfHxmYW5jeSUyMGNvY2t0YWlsJTIwZ2xhc3N8ZW58MHx8fHwxNzY5OTM1MzMyfDA&ixlib=rb-4.1.0&q=85",
+        "alt": "Fancy Cocktail"
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Use 'Manrope' for all headings to give a modern, friendly feel.",
+    "Use 'Inter' for body text for maximum legibility.",
+    "Implement a 'Dark Sidebar' for the Admin Dashboard to distinguish it from the customer view.",
+    "For the Customer App, use a 'Light Mode' base with 'Spicy Orange' (#F97316) accents to stimulate appetite.",
+    "Kitchen Dashboard must be High Contrast. Use large cards with clear status indicators (Red/Yellow/Green).",
+    "Use the provided image URLs for the initial menu population.",
+    "Ensure all buttons in the customer view are 'Pill Shaped' (rounded-full) for a mobile-app feel.",
+    "Use 'Sonner' for all toast notifications (Order placed, Table ready, etc.).",
+    "Do not use generic gradients. Use solid colors or subtle textures.",
+    "Ensure all interactive elements have 'data-testid' attributes."
+  ],
+  "universal_guidelines": [
+    "Avoid 'AI Slop' - no generic centered layouts.",
+    "Use 2-3x more spacing than typical.",
+    "Micro-animations on all interactions (hover, click, focus).",
+    "No 'Inter' for headings.",
+    "Use 'sonner' for toasts.",
+    "Export components as named exports."
+  ]
+}
