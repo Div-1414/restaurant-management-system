@@ -17,7 +17,10 @@ const useKitchenWebSocket = (restaurantId, onMessage) => {
     if (!restaurantId) return;
 
     const connectWebSocket = () => {
-      const wsUrl = `${process.env.REACT_APP_WS_URL || 'ws://localhost:8000'}/ws/kitchen/${restaurantId}/`;
+      const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+      const host = process.env.REACT_APP_BACKEND_URL.replace("https://", "").replace("http://", "");
+
+      const wsUrl = `${protocol}//${host}/ws/kitchen/${restaurantId}/`;
 
       ws.current = new WebSocket(wsUrl);
 

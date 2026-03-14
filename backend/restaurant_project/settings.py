@@ -8,7 +8,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-dev-key-change
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["restaurant-backend-ods4.onrender.com"]
 
 INSTALLED_APPS = [
     'daphne',
@@ -144,3 +144,8 @@ EMAIL_HOST_USER = 'restro.platform@gmail.com'
 EMAIL_HOST_PASSWORD = 'Kgoe hzuo mbnw inlb'
 
 DEFAULT_FROM_EMAIL = 'Restro Platform <restro.platform@gmail.com>'
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://restaurant-frontend-1m2o.onrender.com",
+]
